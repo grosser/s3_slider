@@ -22,7 +22,6 @@ $.fn.s3Slider = function(vars) {
   var fadeTime    = vars.fadeTime || 1000;
   var current     = 0;
   var fadedIn     = true;
-  var fading      = false;
   var mouseOver   = false;
   var items       = $(".slide", $slider);
 
@@ -32,13 +31,10 @@ $.fn.s3Slider = function(vars) {
   });
   $slider.mouseout(function() {
     mouseOver = false;
-    setSlideTimeout(timeOut/4);
   });
 
 
   function slide(){
-    if(mouseOver && fadedIn)return;
-    
     current = current % items.length; //cycle
     var item = $(items[current]);
     var span = $('span',item);
@@ -52,17 +48,23 @@ $.fn.s3Slider = function(vars) {
     }
   }
 
-  function setSlideTimeout(timeout) {
-    if(fading)return;//no duplicate calls...
-    setTimeout(slide, timeout);
+  function setSlideTimeout(time) {
+    setTimeout(trySlide, time);
+  }
+
+  //if user blocks, then try again in a bit...
+  function trySlide(){
+    if(mouseOver){
+      setSlideTimeout(fadeTime)
+    } else {
+      slide();
+    }
   }
 
   function fadeIn(item,span){
-    fading = true;
     var success = function(){
       fadedIn = true;
-      fading = false;
-      setSlideTimeout(timeOut)
+      setSlideTimeout(timeOut);
     };
     item.fadeIn(fadeTime, function() {
       span.fadeIn(fadeTime,success);
@@ -70,11 +72,9 @@ $.fn.s3Slider = function(vars) {
   }
 
   function fadeOut(item,span){
-    fading = true;
     var success = function(){
-      fading = false;
       fadedIn = false;
-      setSlideTimeout(0);
+      slide();//=> fadeIn
     };
     span.fadeOut('slow',function(){
       item.fadeOut(fadeTime,success);
