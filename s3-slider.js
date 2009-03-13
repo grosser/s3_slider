@@ -21,7 +21,6 @@ $.fn.s3Slider = function(vars) {
   var timeOut     = vars.timeOut || 6000;
   var fadeTime    = vars.fadeTime || 1000;
   var current     = 0;
-  var fadedIn     = true;
   var mouseOver   = false;
   var items       = $(".slide", $slider);
 
@@ -33,15 +32,16 @@ $.fn.s3Slider = function(vars) {
     mouseOver = false;
   });
 
+  function visible(item){
+    return $(item).css('display')!='none'
+  }
 
   function slide(){
-    current = current % items.length; //cycle
     var item = $(items[current]);
     var span = $('span',item);
-
-    if(fadedIn) {
+    if(visible(item)) {
       fadeOut(item,span);
-      current++;
+      current = (current + 1) % items.length;
     } else {
       span.hide();
       fadeIn(item,span);
@@ -62,26 +62,22 @@ $.fn.s3Slider = function(vars) {
   }
 
   function fadeIn(item,span){
-    var success = function(){
-      fadedIn = true;
-      setSlideTimeout(timeOut);
-    };
     item.fadeIn(fadeTime, function() {
-      span.fadeIn(fadeTime,success);
-    });
-  }
-
-  function fadeOut(item,span){
-    var success = function(){
-      fadedIn = false;
-      slide();//=> fadeIn
-    };
-    span.fadeOut('slow',function(){
-      item.fadeOut(fadeTime,success);
+      span.fadeIn(fadeTime,function(){
+        setSlideTimeout(timeOut)//=> wait ...
+      })
     })
   }
 
-  setSlideTimeout(timeOut);//start!
+  function fadeOut(item,span){
+    span.fadeOut('slow',function(){
+      item.fadeOut(fadeTime,function(){
+        slide()//=> fadeIn
+      })
+    })
+  }
+
+  setSlideTimeout(visible(items[0]) ? timeOut : 0);//start!
 };
 
 

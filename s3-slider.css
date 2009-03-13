@@ -23,11 +23,6 @@
    display: none;
 }
 
-/*IE HACK*/
-*>html #slider .slide.first {
-   display: block;
-}
-
 /*For sane browsers..*/
 #slider .slide:first-child{
   display: block;

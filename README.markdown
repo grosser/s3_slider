@@ -27,7 +27,8 @@ Download s3-slider.js / s3-slider.css (choose minified version for production).
     });
     </script>
 
-Give the first slide class 'first' and it will display before JS is loaded in IE6 too.
+In IE6 the animation will start with a instant fade from blank->image, if you do no like this,
+make the first slide visible (display:block)
 
 Options
 =======
