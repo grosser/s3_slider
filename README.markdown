@@ -34,11 +34,16 @@ Options
 =======
     timeout : miliseconds or 'slow'/'fast'     default: 6000
     fadeTime : miliseconds or 'slow'/'fast'    default: 1000
+    spanOpacity : opacity of description span  default: 0.7
 
 Authors
 =======
-Current version:  [Michael Grosser](http://pragmatig.wordpress.com)
+[Michael Grosser](http://pragmatig.wordpress.com)  
+grosser.michael@gmail.com
 
-Original:  
+### Contributors
+ - mcritchlow
+
+### Original
 Developped By: [Boban Karišik](http://www.serie3.info/)  
 CSS Help: [Mészáros Róbert](http://www.perspectived.com/)

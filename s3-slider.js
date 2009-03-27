@@ -23,6 +23,7 @@ $.fn.s3Slider = function(vars) {
   var current     = 0;
   var mouseOver   = false;
   var items       = $(".slide", $slider);
+  var spanOpacity = vars.spanOpacity || 0.7;
 
   //Track mouseover
   $slider.mouseover(function() {
@@ -63,7 +64,8 @@ $.fn.s3Slider = function(vars) {
 
   function fadeIn(item,span){
     item.fadeIn(fadeTime, function() {
-      span.fadeIn(fadeTime,function(){
+      //normally fadeIn would be sufficient, but IEs need explicit opacity value [mcritchlow]
+      span.css("opacity",0).show().fadeTo(fadeTime,spanOpacity,function(){
         setSlideTimeout(timeOut)//=> wait ...
       })
     })
@@ -77,7 +79,9 @@ $.fn.s3Slider = function(vars) {
     })
   }
 
-  setSlideTimeout(visible(items[0]) ? timeOut : 0);//start!
+  //GO!
+  $('span',items[0]).css('opacity',spanOpacity); //set initial opacity
+  setSlideTimeout(visible(items[0]) ? timeOut : 0); //start sliding
 };
 
 
