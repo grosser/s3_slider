@@ -18,7 +18,7 @@
 $.fn.s3Slider = function(vars) {
   vars = vars || {};
   var $slider     = $(this);
-  var timeOut     = vars.timeOut || 6000;
+  var timeout     = vars.timeout || vars.timeOut || 6000;//timeOut is deprecated...
   var fadeTime    = vars.fadeTime || 1000;
   var current     = 0;
   var mouseOver   = false;
@@ -68,7 +68,7 @@ $.fn.s3Slider = function(vars) {
     item.fadeIn(fadeTime, function() {
       //normally fadeIn would be sufficient, but IEs need explicit opacity value [mcritchlow]
       span.css("opacity",0).show().fadeTo(fadeTime,spanOpacity,function(){
-        setSlideTimeout(timeOut)//=> wait ...
+        setSlideTimeout(timeout)//=> wait ...
       })
     })
   }
@@ -83,7 +83,7 @@ $.fn.s3Slider = function(vars) {
 
   //GO!
   $('span',items[0]).css('opacity',spanOpacity); //set initial opacity
-  setSlideTimeout(visible(items[0]) ? timeOut : 0); //start sliding
+  setSlideTimeout(visible(items[0]) ? timeout : 0); //start sliding
 };
 
 
