@@ -51,11 +51,11 @@
             </div>
             <div class="slide">
               <img src="demo/2.jpg"/>
-              <span> Another text long or short text should be placed here to inform customers of your great products...</span>
+              <span> Another text long or short text should be placed here to inform customers of your great products, next slide has no text...</span>
             </div>
             <div class="slide">
               <img src="demo/3.jpg"/>
-              <span><b>But titles are not necessary</b><br/> And even more text long or short text should be placed here to inform customers of your great products...</span>
+              <!--same as: <span>   </span> -->
             </div>
             <div class="slide">
               <img src="demo/4.jpg"/>
@@ -109,7 +109,7 @@ jQuery(function($){
   <script src="s3-slider.js" type="text/javascript"></script>
   <script>
     jQuery(function($){
-      $('#slider').s3Slider();
+      $('#slider').s3Slider({timeout:10000});
     });
   </script>
 </body>

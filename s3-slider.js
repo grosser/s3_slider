@@ -40,6 +40,8 @@ $.fn.s3Slider = function(vars) {
   function slide(){
     var item = $(items[current]);
     var span = $('span',item);
+    var span_is_blank = !span.html() ||  /^\s*$/.test(span.html());
+    if(span_is_blank){span.hide();span = $('<span>')};//fade this null-element in case no span was found
     if(visible(item)) {
       fadeOut(item,span);
       current = (current + 1) % items.length;
