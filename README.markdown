@@ -1,11 +1,11 @@
 s3_slider
 ========
-S3 Slider is a simple slideshow that displays images with their description.  
+S3 Slider is a simple slideshow that displays images with their description.
 This is an complete rewrite to make it smaller / simpler / more elegant.
 
 Works in IE6 + the rest.
 
-[Demo(older version, new looks similar)](http://www.serie3.info/s3slider/demonstration.html) or [Simple demo of new version](http://rathershort.com)
+[Demo(older version, new looks similar)](http://www.serie3.info/s3slider/demonstration.html) or download it and open index.html
 
 Installation
 ============
@@ -38,12 +38,12 @@ Options
 
 Authors
 =======
-[Michael Grosser](http://pragmatig.wordpress.com)  
+[Michael Grosser](http://pragmatig.wordpress.com)
 grosser.michael@gmail.com
 
 ### Contributors
  - mcritchlow
 
 ### Original
-Developped By: [Boban Karišik](http://www.serie3.info/)  
+Developped By: [Boban Karišik](http://www.serie3.info/)
 CSS Help: [Mészáros Róbert](http://www.perspectived.com/)
