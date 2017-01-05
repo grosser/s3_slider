@@ -83,7 +83,7 @@ $.fn.s3Slider = function(vars) {
 
   //GO!
   $('span',items[0]).css('opacity',spanOpacity); //set initial opacity
-  setSlideTimeout(visible(items[0]) ? timeout : 0); //start sliding
+  setSlideTimeout(visible($(items[0])) ? timeout : 0); //start sliding
 };
 
 
