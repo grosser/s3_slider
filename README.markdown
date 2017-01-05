@@ -42,7 +42,8 @@ michael@grosser.it</br>
 License: MIT</br>
 
 ### Contributors
- - mcritchlow
+ - [mcritchlow](https://github.com/mcritchlow)
+ - [Tylerian](https://github.com/Tylerian)
 
 ### Original
 Developped By: [Boban Karišik](http://www.serie3.info/)</br>
