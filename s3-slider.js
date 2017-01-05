@@ -34,7 +34,7 @@ $.fn.s3Slider = function(vars) {
   });
 
   function visible(item){
-    return $(item).css('display')!='none'
+    return item.css('display')!='none'
   }
 
   function slide(){
